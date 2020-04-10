@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="300dp"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_height="400dp">
+
+    <TextView
+        android:id="@+id/txt"
+        style="@style/headerTextPrimary"
+        android:layout_marginTop="16dp"
+        android:gravity="center_horizontal"
+        android:text="Verify Your Contact Number"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/txtContact"
+        style="@style/headerTextPrimary"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:text="3030303030"
+        app:layout_constraintTop_toBottomOf="@id/txt"
+        tools:ignore="MissingConstraints" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/editTextOtp"
+            style="@style/modifiedEditText"
+            android:layout_width="wrap_content"
+            android:hint="Enter Your Otp."
+            android:inputType="phone"
+            android:maxLength="6"
+            android:maxLines="1"
+            android:textSize="17dp" />
+
+
+        <TextView
+            android:id="@+id/txtResend"
+            android:textColor="#F30B0B"
+            android:layout_marginTop="5dp"
+            android:gravity="center_horizontal"
+            android:text="Resend"
+            android:layout_marginLeft="10dp"
+            android:textSize="20dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/otpSubmitButton"
+        style="@style/loginButton"
+        android:text="Done"
+        android:background="@drawable/login_shape_bk"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/loginViewsMargin" />
+
+</LinearLayout>
