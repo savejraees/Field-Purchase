@@ -54,10 +54,12 @@ public class LoginActivity extends AppCompatActivity {
                 if (editTextMobile.getText().toString().isEmpty()) {
                     editTextMobile.setError("Can't be Blank");
                     editTextMobile.requestFocus();
-                } else if (editTextMobile.getText().toString().length() != 10) {
-                    editTextMobile.setError("MObile no. should be 10 digits");
-                    editTextMobile.requestFocus();
-                } else if (editTextPassword.getText().toString().isEmpty()) {
+                }
+//                else if (editTextMobile.getText().toString().length() != 10) {
+//                    editTextMobile.setError("MObile no. should be 10 digits");
+//                    editTextMobile.requestFocus();
+//                }
+                else if (editTextPassword.getText().toString().isEmpty()) {
                     editTextPassword.setError("Can't be Blank");
                     editTextPassword.requestFocus();
                 }
@@ -86,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
         ApiInterface api = retrofit.create(ApiInterface.class);
 
         Call<LoginModel> call = api.hitLogin(Url.key, editTextMobile.getText().toString(),
-                editTextPassword.getText().toString(), "shop");
+                editTextPassword.getText().toString(), "field","user");
 
         call.enqueue(new Callback<LoginModel>() {
             @Override
@@ -100,10 +102,14 @@ public class LoginActivity extends AppCompatActivity {
 
                         String name = loginModel.getName();
                         String mobile = loginModel.getMobile();
+                        String location = loginModel.getLocation();
+                        int Buisnesslocation = loginModel.getBusinessLocationId();
                         int userId = loginModel.getUserid();
                         sessonManager.setToken(String.valueOf(userId));
                         sessonManager.setMobile(mobile);
                         sessonManager.setUserName(name);
+                        sessonManager.setLocation(location);
+                        sessonManager.setBuisnessLocationId(String.valueOf(Buisnesslocation));
 
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         finishAffinity();

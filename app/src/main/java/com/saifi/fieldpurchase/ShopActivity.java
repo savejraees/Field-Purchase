@@ -79,7 +79,7 @@ public class ShopActivity extends AppCompatActivity  implements
     ModelAdapter modelAdapter;
     Views views = new Views();
     ImageView scanNow;
-    TextView txtOtpContact, txtResend, txtName, txtContactShop, txtPhoneId;
+    TextView txtOtpContact, txtResend, txtName, txtContactShop, txtLocation;
     ArrayList<BrandSpinner> brand_list = new ArrayList<>();
     final ArrayList<String> brand_list_datamobile = new ArrayList();
     ArrayList<SeriesModel> series_list = new ArrayList<>();
@@ -405,6 +405,7 @@ public class ShopActivity extends AppCompatActivity  implements
         edt_model = findViewById(R.id.edt_model);
         txtName = findViewById(R.id.txtNameShop);
         txtContactShop = findViewById(R.id.txtContactShop);
+        txtLocation = findViewById(R.id.txtLocation);
         scanNow = findViewById(R.id.scanNow);
         model_autocompleteTv = findViewById(R.id.model_autocompleteTv);
         model_autocompleteTv.setThreshold(1);
@@ -413,6 +414,7 @@ public class ShopActivity extends AppCompatActivity  implements
         userId = sessonManager.getToken();
         txtName.setText(sessonManager.getUserName());
         txtContactShop.setText("(" + sessonManager.getMobile() + ")");
+        txtLocation.setText(sessonManager.getLocation());
 
         //////////////////// condtion spinner //////////////////
         condition_spinner = findViewById(R.id.condition_spinner);
@@ -441,7 +443,8 @@ public class ShopActivity extends AppCompatActivity  implements
                 edt_purchase_amount.getText().toString(), edt_customer_name.getText().toString(),
                 edt_customer_mobile.getText().toString(), edt_customer_aadhar.getText().toString(),
                 remark, edt_actualPrice.getText().toString(),
-                brandName, seriesName, modelName, userId, conditon_Mobile, editTextExchange.getText().toString());
+                brandName, seriesName, modelName, userId, conditon_Mobile, editTextExchange.getText().toString(),
+                "Field Purchase",sessonManager.getBuisnessLocationId(),"");
 
 
         call.enqueue(new Callback<ShopModel>() {

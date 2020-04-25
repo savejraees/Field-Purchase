@@ -19,6 +19,15 @@ public class LoginModel {
     @SerializedName("role_type")
     @Expose
     private String roleType;
+    @SerializedName("location")
+    @Expose
+    private String location;
+    @SerializedName("business_location_id")
+    @Expose
+    private Integer businessLocationId;
+    @SerializedName("user_role")
+    @Expose
+    private String userRole;
     @SerializedName("msg")
     @Expose
     private String msg;
@@ -64,6 +73,30 @@ public class LoginModel {
 
     public void setRoleType(String roleType) {
         this.roleType = roleType;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Integer getBusinessLocationId() {
+        return businessLocationId;
+    }
+
+    public void setBusinessLocationId(Integer businessLocationId) {
+        this.businessLocationId = businessLocationId;
+    }
+
+    public String getUserRole() {
+        return userRole;
+    }
+
+    public void setUserRole(String userRole) {
+        this.userRole = userRole;
     }
 
     public String getMsg() {

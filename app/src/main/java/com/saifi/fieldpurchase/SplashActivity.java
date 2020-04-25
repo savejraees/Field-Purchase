@@ -2,6 +2,7 @@ package com.saifi.fieldpurchase;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.animation.Animation;
@@ -20,7 +21,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends Activity {
 
     SessonManager sessonManager;
     String token;
@@ -33,7 +34,6 @@ public class SplashActivity extends AppCompatActivity {
         views = new Views();
         token = sessonManager.getToken();
 
-        getSupportActionBar().hide();
 
         final ImageView imageView = (ImageView) findViewById(R.id.imageView);
         final Animation animation_1 = AnimationUtils.loadAnimation(getBaseContext(), R.anim.rotate);
@@ -70,13 +70,11 @@ public class SplashActivity extends AppCompatActivity {
                     Intent i = new Intent(getBaseContext(), LoginActivity.class);
                     startActivity(i);
                 }else {
-                    finish();
-                    Intent i = new Intent(getBaseContext(), MainActivity.class);
-                    startActivity(i);
+                    hitStatusApi();
                 }
 
-            }
 
+            }
 
             @Override
             public void onAnimationRepeat(Animation animation) {
@@ -84,4 +82,43 @@ public class SplashActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void hitStatusApi() {
+        views.showProgress(SplashActivity.this);
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl(Url.BASE_URL)
+                .build();
+
+        ApiInterface api = retrofit.create(ApiInterface.class);
+        Call<StatusModel> call = api.hitStatusApi(Url.key,sessonManager.getToken());
+        call.enqueue(new Callback<StatusModel>() {
+            @Override
+            public void onResponse(Call<StatusModel> call, Response<StatusModel> response) {
+                views.hideProgress();
+                if(response.isSuccessful()){
+                    StatusModel statusModel = response.body();
+                    if(statusModel.getCode().equalsIgnoreCase("200")){
+                        views.showToast(getBaseContext(),statusModel.getMsg());
+                        finish();
+                        Intent i = new Intent(getBaseContext(), MainActivity.class);
+                        startActivity(i);
+                    }
+                    else {
+                        views.showToast(getBaseContext(),statusModel.getMsg());
+                        finish();
+                        Intent i = new Intent(getBaseContext(), LoginActivity.class);
+                        startActivity(i);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<StatusModel> call, Throwable t) {
+                views.hideProgress();
+            }
+        });
+    }
+
 }

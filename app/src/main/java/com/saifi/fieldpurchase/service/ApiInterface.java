@@ -22,7 +22,7 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("purchase_login_new")
     Call<LoginModel> hitLogin(@Field("key") String key, @Field("mobile") String mobile, @Field("password") String password,
-                              @Field("role") String role);
+                              @Field("role") String role,@Field("user_role") String user_role);
 
     @FormUrlEncoded
     @POST("check_active_user")
@@ -38,8 +38,9 @@ public interface ApiInterface {
                                  @Field("remark") String remark, @Field("app_price") String app_Price,
                                  @Field("brand_name") String brand, @Field("series_name") String series,
                                  @Field("model_name") String model, @Field("userid") String userId,
-                                 @Field("condition") String condition, @Field("exchange") String exchange);
-
+                                 @Field("condition") String condition, @Field("exchange") String exchange,
+                                 @Field("purchase_cat_name") String cat_name, @Field("business_location_id") String buisnessID,
+                                 @Field("barcode_scan") String barcode);
     @Multipart
     @POST("shop_purchase_uplode_image")
     Call<JsonObject> imageAPi(@Part MultipartBody.Part[] imageArray1, @PartMap() Map<String, RequestBody> partMap);

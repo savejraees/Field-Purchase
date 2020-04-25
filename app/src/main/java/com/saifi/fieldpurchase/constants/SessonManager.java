@@ -10,6 +10,8 @@ public class SessonManager {
     public static  final String mobile = "mobile";
     public static  final String userName = "Name";
     public static  final String userType = "User";
+    public static  final String location = "Location";
+    public static  final String BuisnessLocationId = "BLocation";
 
     public SessonManager(Context context){
      sharedPreferences = context.getSharedPreferences("sharedPrefrence",Context.MODE_PRIVATE);
@@ -50,4 +52,21 @@ public void setUserType(String type){
         editor.putString(userType,type);
         editor.commit();
 }
+
+    public String getLocation(){
+        return sharedPreferences.getString(location,"");
+    }
+    public void setLocation(String loc){
+        editor.putString(location,loc);
+        editor.commit();
+    }
+
+    public String getBuisnessLocationId(){
+        return sharedPreferences.getString(BuisnessLocationId,"");
+    }
+
+    public void setBuisnessLocationId(String buisnessLocationId){
+        editor.putString(BuisnessLocationId,buisnessLocationId);
+        editor.commit();
+    }
 }

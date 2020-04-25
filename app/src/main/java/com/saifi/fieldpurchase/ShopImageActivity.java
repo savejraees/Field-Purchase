@@ -63,7 +63,7 @@ import retrofit2.Response;
 
 public class ShopImageActivity extends AppCompatActivity implements ScanResultReceiver {
 
-    String phoneId = "";
+    String phoneId = "",imageCAtegory="";;
     Button btnBarCodeScan, selectInVoiceButton, selectMobileButton, selectCustomerButton;
     Button uploadInVoiceButton, uploadMobileButton, uploadCustomerButton,finalImageButton;
     TextView txtBarcodeId;
@@ -145,6 +145,7 @@ public class ShopImageActivity extends AppCompatActivity implements ScanResultRe
                     Toast.makeText(ShopImageActivity.this, "Please Scan BarCode", Toast.LENGTH_SHORT).show();
                 } else {
                     count = 1;
+                    imageCAtegory = "invoice";
                     startDialogInvoice();
                 }
 
@@ -158,6 +159,7 @@ public class ShopImageActivity extends AppCompatActivity implements ScanResultRe
                     Toast.makeText(ShopImageActivity.this, "Please Scan BarCode", Toast.LENGTH_SHORT).show();
                 } else {
                     count = 2;
+                    imageCAtegory = "mobile";
                     startDialogMobile();
                 }
 
@@ -171,6 +173,7 @@ public class ShopImageActivity extends AppCompatActivity implements ScanResultRe
                     Toast.makeText(ShopImageActivity.this, "Please Scan BarCode", Toast.LENGTH_SHORT).show();
                 } else {
                     count = 3;
+                    imageCAtegory = "customer";
                     startDialogCustomer();
                 }
 
@@ -208,6 +211,7 @@ public class ShopImageActivity extends AppCompatActivity implements ScanResultRe
         partMap.put("key", ApiFactory.getRequestBodyFromString(Url.key));
         partMap.put("shop_purchase_id", ApiFactory.getRequestBodyFromString(phoneId));
         partMap.put("barcode_scan", ApiFactory.getRequestBodyFromString(txtBarcodeId.getText().toString()));
+        partMap.put("image_category", ApiFactory.getRequestBodyFromString(imageCAtegory));
 
         MultipartBody.Part[] imageArrayInvoice = new MultipartBody.Part[imagePathListInvoice.size()];
 
@@ -266,6 +270,7 @@ public class ShopImageActivity extends AppCompatActivity implements ScanResultRe
         partMap.put("key", ApiFactory.getRequestBodyFromString(Url.key));
         partMap.put("shop_purchase_id", ApiFactory.getRequestBodyFromString(phoneId));
         partMap.put("barcode_scan", ApiFactory.getRequestBodyFromString(txtBarcodeId.getText().toString()));
+        partMap.put("image_category", ApiFactory.getRequestBodyFromString(imageCAtegory));
 
         MultipartBody.Part[] imageArrayInvoice = new MultipartBody.Part[imagePathListMobile.size()];
 
@@ -324,6 +329,7 @@ public class ShopImageActivity extends AppCompatActivity implements ScanResultRe
         partMap.put("key", ApiFactory.getRequestBodyFromString(Url.key));
         partMap.put("shop_purchase_id", ApiFactory.getRequestBodyFromString(phoneId));
         partMap.put("barcode_scan", ApiFactory.getRequestBodyFromString(txtBarcodeId.getText().toString()));
+        partMap.put("image_category", ApiFactory.getRequestBodyFromString(imageCAtegory));
 
         MultipartBody.Part[] imageArrayInvoice = new MultipartBody.Part[imagePathListCustomer.size()];
 
