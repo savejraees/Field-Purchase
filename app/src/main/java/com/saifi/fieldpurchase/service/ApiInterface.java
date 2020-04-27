@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import com.saifi.fieldpurchase.retrofitmodel.LoginModel;
 import com.saifi.fieldpurchase.retrofitmodel.ShopModel;
 import com.saifi.fieldpurchase.retrofitmodel.StatusModel;
+import com.saifi.fieldpurchase.retrofitmodel.TodayListStatusModel;
 
 
 import java.util.Map;
@@ -44,5 +45,9 @@ public interface ApiInterface {
     @Multipart
     @POST("shop_purchase_uplode_image")
     Call<JsonObject> imageAPi(@Part MultipartBody.Part[] imageArray1, @PartMap() Map<String, RequestBody> partMap);
+
+    @FormUrlEncoded
+    @POST("field_purchase_history")
+    Call<TodayListStatusModel> hitTodayParms(@Field("key") String key,@Field("page") String page,@Field("userid") String userId);
 
 }

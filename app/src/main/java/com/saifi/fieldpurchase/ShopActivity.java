@@ -295,6 +295,7 @@ public class ShopActivity extends AppCompatActivity  implements
                 Model_Model modelObject = (Model_Model) parent.getItemAtPosition(position);
                 modelName = modelObject.getModelName();
                 idmodel = modelObject.getModel_id();
+                Log.d("asdsda",idmodel);
             }
         });
 
@@ -443,7 +444,7 @@ public class ShopActivity extends AppCompatActivity  implements
                 edt_purchase_amount.getText().toString(), edt_customer_name.getText().toString(),
                 edt_customer_mobile.getText().toString(), edt_customer_aadhar.getText().toString(),
                 remark, edt_actualPrice.getText().toString(),
-                brandName, seriesName, modelName, userId, conditon_Mobile, editTextExchange.getText().toString(),
+                brand_id, seriesName, idmodel, userId, conditon_Mobile, editTextExchange.getText().toString(),
                 "Field Purchase",sessonManager.getBuisnessLocationId(),"");
 
 
