@@ -45,6 +45,7 @@ public class TodayActivity extends AppCompatActivity implements RecyclerView.OnS
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_today);
 
+        getSupportActionBar().setTitle("Today Purchase");
         rvTodayData = findViewById(R.id.rvTodayData);
         layoutManager = new GridLayoutManager(TodayActivity.this, 1);
         rvTodayData.setLayoutManager(layoutManager);

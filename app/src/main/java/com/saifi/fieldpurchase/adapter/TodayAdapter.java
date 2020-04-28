@@ -58,13 +58,10 @@ public class TodayAdapter extends RecyclerView.Adapter<TodayAdapter.TotalHolder>
         holder.txtNameAll.setText("Purchased By(" + totalModel.getName() + ")");
         holder.txtBarcodeAll.setText("Barcode no : " + totalModel.getBarcodeScan());
         holder.txtCategoryAll.setText("Purchase Category : " + totalModel.getPurchaseCatName());
-        holder.txtPrice.setText(""+totalModel.getPurchaseAmount());
-
+        holder.txtPrice.setText("₹ "+totalModel.getPurchaseAmount()+"/-");
 
 
     }
-
-
 
     @Override
     public int getItemCount() {

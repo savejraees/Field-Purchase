@@ -37,8 +37,8 @@ public interface ApiInterface {
                                  @Field("purchase_amount") String amount, @Field("customer_name") String name,
                                  @Field("customer_mobile") String mobile, @Field("customer_aadhar") String aadhar,
                                  @Field("remark") String remark, @Field("app_price") String app_Price,
-                                 @Field("brand_name") String brand, @Field("series_name") String series,
-                                 @Field("model_name") String model, @Field("userid") String userId,
+                                 @Field("brand_id") String brand, @Field("series_name") String series,
+                                 @Field("model_id") String model, @Field("userid") String userId,
                                  @Field("condition") String condition, @Field("exchange") String exchange,
                                  @Field("purchase_cat_name") String cat_name, @Field("business_location_id") String buisnessID,
                                  @Field("barcode_scan") String barcode);

@@ -60,7 +60,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ShopActivity extends AppCompatActivity  implements
+public class ShopActivity extends AppCompatActivity implements
         AdapterView.OnItemSelectedListener, ScanResultReceiver {
 
     RadioGroup radioShop, radioWarranty;
@@ -100,6 +100,7 @@ public class ShopActivity extends AppCompatActivity  implements
 
     SessonManager sessonManager;
     String userId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -295,7 +296,7 @@ public class ShopActivity extends AppCompatActivity  implements
                 Model_Model modelObject = (Model_Model) parent.getItemAtPosition(position);
                 modelName = modelObject.getModelName();
                 idmodel = modelObject.getModel_id();
-                Log.d("asdsda",idmodel);
+                Log.d("asdsda", idmodel);
             }
         });
 
@@ -378,6 +379,7 @@ public class ShopActivity extends AppCompatActivity  implements
             }
         });
     }
+
     private void init() {
         radioShop = findViewById(R.id.radioShop);
         radioWarranty = findViewById(R.id.radioWarranty);
@@ -445,7 +447,7 @@ public class ShopActivity extends AppCompatActivity  implements
                 edt_customer_mobile.getText().toString(), edt_customer_aadhar.getText().toString(),
                 remark, edt_actualPrice.getText().toString(),
                 brand_id, seriesName, idmodel, userId, conditon_Mobile, editTextExchange.getText().toString(),
-                "Field Purchase",sessonManager.getBuisnessLocationId(),"");
+                "Field Purchase", sessonManager.getBuisnessLocationId(), "");
 
 
         call.enqueue(new Callback<ShopModel>() {
