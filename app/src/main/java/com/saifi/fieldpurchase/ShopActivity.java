@@ -210,19 +210,22 @@ public class ShopActivity extends AppCompatActivity implements
             public void onClick(View view) {
                 // startActivity(new Intent(getApplicationContext(), ShopImageActivity.class));
                 if (radioAccesories.isChecked()) {
-                    brandName = edit_Brand.getText().toString();
-                    modelName = edt_model.getText().toString();
+                    brand_id = edit_Brand.getText().toString();
+                    idmodel = edt_model.getText().toString();
                 }
 
 
                 if (editTextOrder.getText().toString().isEmpty()) {
                     editTextOrder.setError("Please enter Order no.");
                     editTextOrder.requestFocus();
-                } else if (brandName.equals("") || brandName.isEmpty()) {
-                    Toast.makeText(ShopActivity.this, "Please enter brand", Toast.LENGTH_SHORT).show();
-                } else if (modelName.equals("") || modelName.isEmpty()) {
-                    Toast.makeText(ShopActivity.this, "Please enter Model", Toast.LENGTH_SHORT).show();
-                } else if (edt_gb.getText().toString().isEmpty()) {
+                }
+//                else if (brandName.equals("") || brandName.isEmpty()) {
+//                    Toast.makeText(ShopActivity.this, "Please enter brand", Toast.LENGTH_SHORT).show();
+//                }
+//                else if (modelName.equals("") || modelName.isEmpty()) {
+//                    Toast.makeText(ShopActivity.this, "Please enter Model", Toast.LENGTH_SHORT).show();
+//                }
+                else if (edt_gb.getText().toString().isEmpty()) {
                     edt_gb.setError("Please enter GB");
                     edt_gb.requestFocus();
                 } else if (edt_imei.getText().toString().isEmpty()) {

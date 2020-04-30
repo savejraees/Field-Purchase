@@ -22,7 +22,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/loginViewsMargin"
             android:background="@drawable/login_shape_bk"
-            android:text="Shop Purchase" />
+            android:text="Field Purchase" />
         ]
 
         <Button
